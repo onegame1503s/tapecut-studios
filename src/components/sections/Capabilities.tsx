@@ -1,12 +1,11 @@
 "use client";
 
 import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
-import { useRef, MouseEvent, useEffect, useState } from "react";
+import { useRef, MouseEvent, TouchEvent, useEffect, useState } from "react";
 import { Power, Crosshair, Terminal, Fingerprint } from "lucide-react";
 
 export default function Capabilities() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
   const [powerState, setPowerState] = useState<"offline" | "powering_up" | "online">("offline");
 
   const mouseX = useMotionValue(0);
@@ -16,7 +15,6 @@ export default function Capabilities() {
   
   const torchRadius = useSpring(0, { damping: 15, stiffness: 150 });
 
-  // Focused tactical beam
   const maskImage = useMotionTemplate`radial-gradient(${torchRadius}px circle at ${smoothX}px ${smoothY}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, transparent 80%)`;
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -24,6 +22,15 @@ export default function Capabilities() {
     const { left, top } = containerRef.current.getBoundingClientRect();
     mouseX.set(e.clientX - left);
     mouseY.set(e.clientY - top);
+  };
+
+  // NEW: Touch handler for mobile screens
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const touch = e.touches[0];
+    const { left, top } = containerRef.current.getBoundingClientRect();
+    mouseX.set(touch.clientX - left);
+    mouseY.set(touch.clientY - top);
   };
 
   useEffect(() => {
@@ -37,12 +44,10 @@ export default function Capabilities() {
   const togglePower = () => {
     if (powerState === "offline") {
       setPowerState("powering_up");
-      
       torchRadius.set(200);
       setTimeout(() => torchRadius.set(50), 100);
       setTimeout(() => torchRadius.set(300), 250);
       setTimeout(() => torchRadius.set(100), 400);
-      
       setTimeout(() => {
         setPowerState("online");
         torchRadius.set(350); 
@@ -57,16 +62,12 @@ export default function Capabilities() {
     <section 
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative w-full h-[100vh] bg-[#020202] overflow-hidden border-t border-white/10 transition-colors duration-1000"
+      onTouchMove={handleTouchMove} // Added mobile touch event
+      className="relative w-full h-[100dvh] bg-[#020202] overflow-hidden border-t border-white/10 transition-colors duration-1000"
     >
-      
       <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
         {powerState === "offline" && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex flex-col items-center"
-          >
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center">
             <div className="w-16 h-16 border border-white/10 rounded-full flex items-center justify-center mb-8 relative">
                <div className="absolute inset-0 bg-red-500/10 rounded-full animate-ping" />
                <LockIcon />
@@ -74,7 +75,6 @@ export default function Capabilities() {
             <h2 className="text-sm font-mono tracking-[0.4em] text-white/40 uppercase mb-8">
               VISUAL ENCRYPTION ACTIVE
             </h2>
-            
             <button 
               onClick={togglePower}
               className="group relative px-8 py-4 bg-[#0a0a0a] border border-white/20 hover:border-white transition-all duration-300 flex items-center gap-4 interactive"
@@ -135,7 +135,7 @@ export default function Capabilities() {
         </div>
       </motion.div>
 
-      <div className="absolute top-10 right-10 z-50 flex items-center gap-4 pointer-events-auto">
+      <div className="absolute top-6 right-6 md:top-10 md:right-10 z-50 flex items-center gap-4 pointer-events-auto">
         <span className="font-mono text-[10px] tracking-widest text-white/50 uppercase hidden md:block">
           OPTICS: {powerState === 'online' ? 'ONLINE' : 'OFFLINE'}
         </span>
@@ -153,7 +153,6 @@ export default function Capabilities() {
           />
         </button>
       </div>
-
     </section>
   );
 }

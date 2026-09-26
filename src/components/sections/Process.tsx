@@ -64,12 +64,13 @@ export default function Process() {
         y: status === "hacking" ? [-1, 2, -1, 3, -2, 1, 0] : 0
       }}
       transition={{ repeat: status === "hacking" ? Infinity : 0, duration: 0.2 }}
-      className={`relative w-full h-screen flex flex-col items-center justify-center overflow-hidden border-t border-white/10 transition-colors duration-1000 ${
+      // Changed h-screen to h-[100dvh] for mobile browsers
+      className={`relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden border-t border-white/10 transition-colors duration-1000 ${
         status === "unlocked" ? "bg-[#020202]" : "bg-[#050000]"
       }`}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
-      onPointerCancel={handlePointerUp} // Failsafe for mobile browsers
+      onPointerCancel={handlePointerUp}
     >
       
       <AnimatePresence>
@@ -77,9 +78,8 @@ export default function Process() {
           <motion.div 
             exit={{ opacity: 0, scale: 1.2, filter: "blur(10px)" }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute inset-0 flex flex-col items-center justify-center z-20 w-full h-full"
+            className="absolute inset-0 flex flex-col items-center justify-center z-20 w-full h-full p-4"
           >
-            
             <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none flex flex-wrap break-all font-mono text-[8px] leading-none text-red-500 p-4">
               {status === "hacking" ? matrixCode : ""}
             </div>
@@ -87,26 +87,24 @@ export default function Process() {
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at center, transparent 30%, rgba(220,38,38,0.1) 100%)' }} />
 
             <div className="relative flex flex-col items-center z-50">
-              
-              <div className="flex items-center gap-4 mb-12">
+              <div className="flex items-center gap-4 mb-8 md:mb-12">
                 <ShieldAlert className={`w-6 h-6 ${status === 'denied' ? 'text-red-500' : 'text-red-500/50'}`} />
-                <span className={`font-mono text-sm tracking-[0.4em] uppercase ${status === 'denied' ? 'text-red-500 font-bold' : 'text-red-500/50'}`}>
+                <span className={`font-mono text-xs md:text-sm tracking-[0.4em] uppercase text-center ${status === 'denied' ? 'text-red-500 font-bold' : 'text-red-500/50'}`}>
                   {status === "locked" && "Security Protocol Active"}
                   {status === "hacking" && "Overriding Firewall..."}
                   {status === "denied" && "Sequence Interrupted"}
                 </span>
               </div>
 
-              {/* THE HOLD-TO-UNLOCK BUTTON */}
+              {/* NEW: Added touch-none class to prevent mobile scroll canceling */}
               <motion.div 
                 onPointerDown={handlePointerDown}
-                className="relative w-64 h-64 rounded-full flex items-center justify-center group interactive cursor-pointer select-none"
+                className="relative w-56 h-56 md:w-64 md:h-64 rounded-full flex items-center justify-center group interactive cursor-pointer select-none touch-none"
               >
-                {/* SVG Progress Circle */}
                 <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none drop-shadow-[0_0_15px_rgba(220,38,38,0.5)]">
-                  <circle cx="128" cy="128" r="124" fill="none" stroke="rgba(220,38,38,0.15)" strokeWidth="4" />
+                  <circle cx="50%" cy="50%" r="48%" fill="none" stroke="rgba(220,38,38,0.15)" strokeWidth="4" />
                   <motion.circle 
-                    cx="128" cy="128" r="124" 
+                    cx="50%" cy="50%" r="48%" 
                     fill="none" 
                     stroke="rgba(220,38,38,1)" 
                     strokeWidth="8" 
@@ -116,19 +114,14 @@ export default function Process() {
                   />
                 </svg>
 
-                {/* Custom Biometric Target Design (Replaces the missing lucide icon) */}
-                <div className={`w-48 h-48 rounded-full border flex items-center justify-center transition-all duration-300 relative ${
+                <div className={`w-40 h-40 md:w-48 md:h-48 rounded-full border flex items-center justify-center transition-all duration-300 relative ${
                   status === "hacking" ? "bg-red-950/80 border-red-500 scale-95" : "bg-black/50 border-red-500/40 group-hover:border-red-500"
                 }`}>
-                  
-                  {/* Outer rotating brackets */}
                   <motion.div 
                     animate={{ rotate: status === "hacking" ? 180 : 0 }}
                     transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                     className="absolute inset-0 rounded-full border-2 border-dashed border-red-500/30" 
                   />
-
-                  {/* Inner Target Icon */}
                   <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" className={`transition-colors duration-300 ${status === "hacking" ? "text-red-500 animate-pulse" : "text-red-500/40 group-hover:text-red-500"}`} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 3a2 2 0 0 0-2 2"></path>
                     <path d="M19 3a2 2 0 0 1 2 2"></path>
@@ -140,21 +133,19 @@ export default function Process() {
                     <path d="M8 12H6"></path>
                     <path d="M18 12h-2"></path>
                   </svg>
-                  
                 </div>
                 
-                {/* Center Percentage Text */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10">
                   {status === "hacking" && (
-                    <span className="font-mono text-4xl font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,1)]">
+                    <span className="font-mono text-3xl md:text-4xl font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,1)]">
                       {progress}%
                     </span>
                   )}
                 </div>
               </motion.div>
 
-              <div className="mt-16 text-center">
-                <span className={`font-sans text-sm tracking-[0.4em] uppercase transition-colors ${
+              <div className="mt-12 md:mt-16 text-center">
+                <span className={`font-sans text-xs md:text-sm tracking-[0.4em] uppercase transition-colors ${
                   status === "hacking" ? "text-red-500 font-bold" : "text-white/40"
                 }`}>
                   [ HOLD TO AUTHENTICATE ]
@@ -165,69 +156,64 @@ export default function Process() {
         )}
       </AnimatePresence>
 
-      {/* STATE 3: UNLOCKED SERVICES GRID */}
       <AnimatePresence>
         {status === "unlocked" && (
           <motion.div 
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
-            className="absolute inset-0 w-full h-full z-30 px-6 md:px-12 lg:px-24 py-32 overflow-y-auto flex flex-col justify-center"
+            className="absolute inset-0 w-full h-full z-30 px-6 md:px-12 lg:px-24 py-16 md:py-32 overflow-y-auto flex flex-col justify-center"
           >
-            <div className="max-w-screen-2xl mx-auto w-full">
-              
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-20">
+            <div className="max-w-screen-2xl mx-auto w-full pt-10">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-10 mb-10 md:mb-20">
                 <div>
-                  <div className="flex items-center gap-4 mb-6">
-                    <Unlock className="w-5 h-5 text-metallic" />
-                    <span className="text-xs font-mono tracking-[0.4em] text-metallic uppercase">
+                  <div className="flex items-center gap-4 mb-4 md:mb-6">
+                    <Unlock className="w-4 h-4 md:w-5 md:h-5 text-metallic" />
+                    <span className="text-[10px] md:text-xs font-mono tracking-[0.4em] text-metallic uppercase">
                       Access Granted // Core Systems
                     </span>
                   </div>
-                  <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tighter text-white leading-[0.9]">
+                  <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold tracking-tighter text-white leading-[0.9]">
                     OPERATIONAL <br /> CAPABILITIES.
                   </h2>
                 </div>
-                <p className="text-sm font-sans text-white/50 max-w-sm leading-relaxed">
+                <p className="text-xs md:text-sm font-sans text-white/50 max-w-sm leading-relaxed">
                   The infrastructure required to dominate the digital landscape. We provide end-to-end architectural execution.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <div className="border border-white/10 bg-[#050505] p-8 lg:p-12 flex flex-col group hover:bg-white hover:border-white transition-colors duration-500 rounded-2xl">
-                  <Cpu className="w-10 h-10 text-white/30 group-hover:text-black mb-16 transition-colors duration-500" />
-                  <span className="text-5xl font-display font-bold text-white/10 group-hover:text-black/10 mb-4 block transition-colors">01</span>
-                  <h3 className="text-2xl font-display font-bold text-white group-hover:text-black mb-6 transition-colors">Front-End Architecture.</h3>
-                  <p className="text-sm font-sans text-white/50 group-hover:text-black/70 leading-relaxed transition-colors">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 pb-20">
+                <div className="border border-white/10 bg-[#050505] p-6 lg:p-12 flex flex-col group hover:bg-white hover:border-white transition-colors duration-500 rounded-2xl">
+                  <Cpu className="w-8 h-8 md:w-10 md:h-10 text-white/30 group-hover:text-black mb-8 md:mb-16 transition-colors duration-500" />
+                  <span className="text-3xl md:text-5xl font-display font-bold text-white/10 group-hover:text-black/10 mb-2 md:mb-4 block transition-colors">01</span>
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-black mb-4 md:mb-6 transition-colors">Front-End Architecture.</h3>
+                  <p className="text-xs md:text-sm font-sans text-white/50 group-hover:text-black/70 leading-relaxed transition-colors">
                     Pixel-perfect, hyper-optimized DOM structures. We build exclusively on React 19 and Next.js App Router for zero-latency rendering and maximum SEO dominance.
                   </p>
                 </div>
 
-                <div className="border border-white/10 bg-[#050505] p-8 lg:p-12 flex flex-col group hover:bg-white hover:border-white transition-colors duration-500 rounded-2xl">
-                  <Network className="w-10 h-10 text-white/30 group-hover:text-black mb-16 transition-colors duration-500" />
-                  <span className="text-5xl font-display font-bold text-white/10 group-hover:text-black/10 mb-4 block transition-colors">02</span>
-                  <h3 className="text-2xl font-display font-bold text-white group-hover:text-black mb-6 transition-colors">Kinetic Physics.</h3>
-                  <p className="text-sm font-sans text-white/50 group-hover:text-black/70 leading-relaxed transition-colors">
+                <div className="border border-white/10 bg-[#050505] p-6 lg:p-12 flex flex-col group hover:bg-white hover:border-white transition-colors duration-500 rounded-2xl">
+                  <Network className="w-8 h-8 md:w-10 md:h-10 text-white/30 group-hover:text-black mb-8 md:mb-16 transition-colors duration-500" />
+                  <span className="text-3xl md:text-5xl font-display font-bold text-white/10 group-hover:text-black/10 mb-2 md:mb-4 block transition-colors">02</span>
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-black mb-4 md:mb-6 transition-colors">Kinetic Physics.</h3>
+                  <p className="text-xs md:text-sm font-sans text-white/50 group-hover:text-black/70 leading-relaxed transition-colors">
                     Static sites are dead. We engineer bespoke, GPU-accelerated spatial animations using Framer Motion and WebGL to create visceral, unforgettable user experiences.
                   </p>
                 </div>
 
-                <div className="border border-white/10 bg-[#050505] p-8 lg:p-12 flex flex-col group hover:bg-white hover:border-white transition-colors duration-500 rounded-2xl">
-                  <Database className="w-10 h-10 text-white/30 group-hover:text-black mb-16 transition-colors duration-500" />
-                  <span className="text-5xl font-display font-bold text-white/10 group-hover:text-black/10 mb-4 block transition-colors">03</span>
-                  <h3 className="text-2xl font-display font-bold text-white group-hover:text-black mb-6 transition-colors">Edge Infrastructure.</h3>
-                  <p className="text-sm font-sans text-white/50 group-hover:text-black/70 leading-relaxed transition-colors">
+                <div className="border border-white/10 bg-[#050505] p-6 lg:p-12 flex flex-col group hover:bg-white hover:border-white transition-colors duration-500 rounded-2xl">
+                  <Database className="w-8 h-8 md:w-10 md:h-10 text-white/30 group-hover:text-black mb-8 md:mb-16 transition-colors duration-500" />
+                  <span className="text-3xl md:text-5xl font-display font-bold text-white/10 group-hover:text-black/10 mb-2 md:mb-4 block transition-colors">03</span>
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-black mb-4 md:mb-6 transition-colors">Edge Infrastructure.</h3>
+                  <p className="text-xs md:text-sm font-sans text-white/50 group-hover:text-black/70 leading-relaxed transition-colors">
                     Secure, scalable, and instant. We deploy global database networks (PostgreSQL) and serverless edge functions that handle thousands of requests without breaking a sweat.
                   </p>
                 </div>
-
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-
     </motion.section>
   );
 }
