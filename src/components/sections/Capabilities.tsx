@@ -24,7 +24,7 @@ export default function Capabilities() {
     mouseY.set(e.clientY - top);
   };
 
-  // NEW: Touch handler for mobile screens
+  // Mobile touch event
   const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
     const touch = e.touches[0];
@@ -62,7 +62,7 @@ export default function Capabilities() {
     <section 
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      onTouchMove={handleTouchMove} // Added mobile touch event
+      onTouchMove={handleTouchMove} 
       className="relative w-full h-[100dvh] bg-[#020202] overflow-hidden border-t border-white/10 transition-colors duration-1000"
     >
       <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
@@ -115,23 +115,26 @@ export default function Capabilities() {
             <div className="w-12 h-[1px] bg-white/30" />
           </div>
 
+          {/* ----- NEW COPY STARTS HERE ----- */}
           <h2 className="text-4xl md:text-6xl lg:text-[80px] font-display font-bold tracking-tighter text-white leading-[0.9] drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] mb-8">
-            YOU FOUND <br /> THE SIGNAL.
+            WE ENGINEER <br /> YOUR ADVANTAGE.
           </h2>
 
           <p className="text-sm md:text-base font-sans text-white/70 leading-relaxed max-w-xl">
-            If you are reading this, you bypassed the aesthetic layer. Most agencies sell you templates dressed up as custom code. They sell illusions. 
+            You aren't here for a standard, boring template. You are here because you need a digital platform that commands authority and actually drives business. 
             <br/><br/>
-            At Tapecut Studios, we engineer the underlying physics. No bloat. No limits. Pure, raw digital infrastructure built from the ground up. You have found the truth in the noise.
+            At <strong className="text-white">Tapecut Studios</strong>, we build high-converting websites, striking brand identities, and powerful web applications. We combine jaw-dropping design with flawless technical performance to turn your visitors into loyal clients.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mt-12">
-            {['REACT 19', 'NEXT.JS CORE', 'FRAMER PHYSICS', 'WEBGL RENDER'].map(tech => (
+            {['CUSTOM WEBSITES', 'E-COMMERCE', 'AI INTEGRATIONS', 'UI/UX DESIGN'].map(tech => (
                <span key={tech} className="px-4 py-2 border border-white/20 text-[10px] font-mono text-white/80 tracking-widest uppercase bg-white/5 backdrop-blur-md">
                  {tech}
                </span>
             ))}
           </div>
+          {/* ----- NEW COPY ENDS HERE ----- */}
+
         </div>
       </motion.div>
 

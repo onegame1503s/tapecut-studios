@@ -6,29 +6,42 @@ import Link from "next/link";
 
 // Isolated button component for bulletproof hover math
 const AnimatedLink = ({ title, href }: { title: string; href: string }) => {
+  const isAnchor = href.startsWith("#");
+
+  const innerContent = (
+    <motion.div
+      variants={{
+        initial: { y: 0 },
+        hover: { y: "-50%" } // Moves exactly half-way up
+      }}
+      initial="initial"
+      whileHover="hover"
+      transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+      className="flex flex-col"
+    >
+      {/* Top text (Default) */}
+      <span className="h-5 flex items-center leading-none">{title}</span>
+      {/* Bottom text (Hover state) */}
+      <span className="h-5 flex items-center leading-none text-metallic">{title}</span>
+    </motion.div>
+  );
+
   return (
     <Magnetic>
       {/* 
         The outer div strictly clips the overflow. 
         h-5 locks the height exactly to the text size.
+        We check if it's a # link to ensure flawless smooth scrolling.
       */}
-      <Link href={href} className="interactive relative block h-5 overflow-hidden group px-1">
-        <motion.div
-          variants={{
-            initial: { y: 0 },
-            hover: { y: "-50%" } // Moves exactly half-way up
-          }}
-          initial="initial"
-          whileHover="hover"
-          transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-          className="flex flex-col"
-        >
-          {/* Top text (Default) */}
-          <span className="h-5 flex items-center leading-none">{title}</span>
-          {/* Bottom text (Hover state) */}
-          <span className="h-5 flex items-center leading-none text-metallic">{title}</span>
-        </motion.div>
-      </Link>
+      {isAnchor ? (
+        <a href={href} className="interactive relative block h-5 overflow-hidden group px-1">
+          {innerContent}
+        </a>
+      ) : (
+        <Link href={href} className="interactive relative block h-5 overflow-hidden group px-1">
+          {innerContent}
+        </Link>
+      )}
     </Magnetic>
   );
 };

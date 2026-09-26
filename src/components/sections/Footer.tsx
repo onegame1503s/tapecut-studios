@@ -62,18 +62,19 @@ export default function Footer() {
         {/* Left Side */}
         <div className="w-full lg:w-1/2 flex flex-col justify-between">
           <div>
+            {/* UPDATED: Strong Business CTA */}
             <div className="flex items-center gap-6 mb-10">
-              <div className="w-16 h-[1px] bg-metallic" />
-              <h2 className="text-sm tracking-widest uppercase text-metallic">Initiate</h2>
+              <div className="w-16 h-[1px] bg-red-500" />
+              <h2 className="text-sm font-mono tracking-[0.3em] uppercase text-red-500">// INITIATE PROJECT</h2>
             </div>
             
-            <h3 className="text-5xl md:text-7xl font-display font-bold tracking-tighter leading-[0.9] mb-6">
-              LET'S BUILD <br />
-              <span className="text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,1)]">THE IMPOSSIBLE.</span>
+            <h3 className="text-5xl md:text-7xl font-display font-bold tracking-tighter leading-[0.9] mb-6 uppercase">
+              BUILD A WORLD-CLASS <br />
+              <span className="text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,1)]">WEBSITE.</span>
             </h3>
             
-            <p className="text-metallic font-sans text-base max-w-md leading-relaxed mb-16">
-              We partner with elite brands and visionaries to engineer digital infrastructure that dominates. Tell us about your project or request a direct quote.
+            <p className="text-metallic font-sans text-base md:text-lg max-w-md leading-relaxed mb-16">
+              Start the conversation. We partner with ambitious brands to engineer custom, high-converting digital platforms that dominate the market. Request a direct quote today.
             </p>
 
             <div className="flex flex-col gap-4">
@@ -81,7 +82,7 @@ export default function Footer() {
                 Direct Transmission //
               </span>
               <a 
-                href="tel:+910000000000" 
+                href="tel:+919149177677" 
                 className="group w-fit flex items-center gap-6 interactive"
               >
                 <div className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center bg-transparent group-hover:bg-white transition-colors duration-500 relative overflow-hidden">
@@ -166,7 +167,6 @@ export default function Footer() {
 
             {/* 
               THE ADVANCED KINETIC LAUNCH TERMINAL 
-              Physically expands from h-20 (80px) to h-60 (240px) during launch.
             */}
             <motion.button 
               type="submit"
@@ -183,7 +183,6 @@ export default function Footer() {
 
               {/* 
                 THE LAUNCH SEQUENCE: MASSIVE CAD MISSILE
-                Total Animation Duration: 4.5 Seconds.
               */}
               <AnimatePresence>
                 {formState === "submitting" && (
@@ -217,14 +216,6 @@ export default function Footer() {
                     {/* Background Radar / CAD Grid */}
                     <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
 
-                    {/* 
-                      THE VEHICLE CONTAINER 
-                      Timings (4.5s total):
-                      0-1s: Slide in from left
-                      1-3s: Lock in center (Spooling)
-                      3-3.5s: Pull back heavily (Anticipation)
-                      3.5-4.5s: BLAST OFF to the right
-                    */}
                     <motion.div
                       animate={{ x: ["-150%", "0%", "0%", "-10%", "300%"] }}
                       transition={{ 
@@ -234,39 +225,30 @@ export default function Footer() {
                       }}
                       className="relative w-full max-w-lg h-full flex items-center justify-center z-10"
                     >
-                      {/* 
-                        ENGINE VIBRATION 
-                        Continuously shakes the SVG slightly to simulate raw power
-                      */}
                       <motion.div
                         animate={{ y: [0, -1, 1, -2, 0] }}
                         transition={{ duration: 0.1, repeat: Infinity }}
                         className="w-full h-full flex items-center justify-center relative"
                       >
                          
-                         {/* MASSIVE PLASMA EXHAUST TRAIL (Fires during the pull-back and launch phase) */}
+                         {/* MASSIVE PLASMA EXHAUST TRAIL */}
                          <motion.div 
                            className="absolute top-1/2 -translate-y-1/2 right-[85%] h-1 bg-white blur-[2px] shadow-[0_0_30px_5px_rgba(255,255,255,1)]"
                            animate={{ width: [0, 0, 0, 800, 800], opacity: [0, 0, 0, 1, 0] }}
                            transition={{ duration: 4.5, times: [0, 0.66, 0.77, 0.85, 1] }}
                          />
 
-                         {/* DETAILED AEROSPACE BLUEPRINT (The Data Missile) */}
+                         {/* DETAILED AEROSPACE BLUEPRINT */}
                          <svg viewBox="0 0 400 150" className="w-full h-[150px] text-white/90 overflow-visible relative z-10" preserveAspectRatio="xMidYMid meet">
-                           {/* Targeting Crosshairs behind the ship */}
                            <line x1="200" y1="0" x2="200" y2="150" stroke="currentColor" strokeOpacity="0.2" strokeWidth="1" />
                            <line x1="0" y1="75" x2="400" y2="75" stroke="currentColor" strokeOpacity="0.2" strokeWidth="1" />
                            <circle cx="200" cy="75" r="40" stroke="currentColor" strokeOpacity="0.2" fill="none" />
                            
                            <g transform="translate(20, 25)">
-                              {/* Main Hull */}
                               <path d="M 10 50 L 50 25 L 280 45 L 340 50 L 280 55 L 50 75 Z" stroke="currentColor" strokeWidth="2" fill="rgba(255,255,255,0.05)" />
-                              {/* Aerodynamic Wings */}
                               <path d="M 50 25 L 80 -10 L 140 35" stroke="currentColor" strokeWidth="2" fill="none" />
                               <path d="M 50 75 L 80 110 L 140 65" stroke="currentColor" strokeWidth="2" fill="none" />
-                              {/* Internal Structural Grid Line */}
                               <line x1="10" y1="50" x2="340" y2="50" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-                              {/* Thruster Array Rings */}
                               <path d="M 10 35 L -10 25 L -10 75 L 10 65" stroke="currentColor" strokeWidth="2" fill="none" />
                               <line x1="-10" y1="40" x2="-30" y2="40" stroke="currentColor" strokeWidth="2" />
                               <line x1="-10" y1="60" x2="-30" y2="60" stroke="currentColor" strokeWidth="2" />
@@ -279,7 +261,7 @@ export default function Footer() {
                 )}
               </AnimatePresence>
 
-              {/* Default Button State (Hides during the launch sequence) */}
+              {/* Default Button State */}
               <div className={`w-full flex items-center justify-between relative z-20 transition-opacity duration-300 px-2
                 ${formState === 'submitting' ? 'opacity-0' : 'opacity-100'}
               `}>

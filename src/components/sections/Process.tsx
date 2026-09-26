@@ -64,7 +64,6 @@ export default function Process() {
         y: status === "hacking" ? [-1, 2, -1, 3, -2, 1, 0] : 0
       }}
       transition={{ repeat: status === "hacking" ? Infinity : 0, duration: 0.2 }}
-      // Changed h-screen to h-[100dvh] for mobile browsers
       className={`relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden border-t border-white/10 transition-colors duration-1000 ${
         status === "unlocked" ? "bg-[#020202]" : "bg-[#050000]"
       }`}
@@ -96,7 +95,6 @@ export default function Process() {
                 </span>
               </div>
 
-              {/* NEW: Added touch-none class to prevent mobile scroll canceling */}
               <motion.div 
                 onPointerDown={handlePointerDown}
                 className="relative w-56 h-56 md:w-64 md:h-64 rounded-full flex items-center justify-center group interactive cursor-pointer select-none touch-none"
@@ -183,32 +181,36 @@ export default function Process() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 pb-20">
+                
+                {/* --- NEW COPY APPLIED HERE --- */}
                 <div className="border border-white/10 bg-[#050505] p-6 lg:p-12 flex flex-col group hover:bg-white hover:border-white transition-colors duration-500 rounded-2xl">
                   <Cpu className="w-8 h-8 md:w-10 md:h-10 text-white/30 group-hover:text-black mb-8 md:mb-16 transition-colors duration-500" />
                   <span className="text-3xl md:text-5xl font-display font-bold text-white/10 group-hover:text-black/10 mb-2 md:mb-4 block transition-colors">01</span>
-                  <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-black mb-4 md:mb-6 transition-colors">Front-End Architecture.</h3>
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-black mb-4 md:mb-6 transition-colors">Bespoke Web Development.</h3>
                   <p className="text-xs md:text-sm font-sans text-white/50 group-hover:text-black/70 leading-relaxed transition-colors">
-                    Pixel-perfect, hyper-optimized DOM structures. We build exclusively on React 19 and Next.js App Router for zero-latency rendering and maximum SEO dominance.
+                    We engineer custom websites and scalable platforms tailored strictly to your brand. No templates. Just lightning-fast, hyper-optimized architecture designed to convert.
                   </p>
                 </div>
 
                 <div className="border border-white/10 bg-[#050505] p-6 lg:p-12 flex flex-col group hover:bg-white hover:border-white transition-colors duration-500 rounded-2xl">
                   <Network className="w-8 h-8 md:w-10 md:h-10 text-white/30 group-hover:text-black mb-8 md:mb-16 transition-colors duration-500" />
                   <span className="text-3xl md:text-5xl font-display font-bold text-white/10 group-hover:text-black/10 mb-2 md:mb-4 block transition-colors">02</span>
-                  <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-black mb-4 md:mb-6 transition-colors">Kinetic Physics.</h3>
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-black mb-4 md:mb-6 transition-colors">Immersive UI/UX Design.</h3>
                   <p className="text-xs md:text-sm font-sans text-white/50 group-hover:text-black/70 leading-relaxed transition-colors">
-                    Static sites are dead. We engineer bespoke, GPU-accelerated spatial animations using Framer Motion and WebGL to create visceral, unforgettable user experiences.
+                    Aesthetic superiority meets user psychology. We craft visceral, interactive interfaces and layouts that captivate your audience and make your brand impossible to ignore.
                   </p>
                 </div>
 
                 <div className="border border-white/10 bg-[#050505] p-6 lg:p-12 flex flex-col group hover:bg-white hover:border-white transition-colors duration-500 rounded-2xl">
                   <Database className="w-8 h-8 md:w-10 md:h-10 text-white/30 group-hover:text-black mb-8 md:mb-16 transition-colors duration-500" />
                   <span className="text-3xl md:text-5xl font-display font-bold text-white/10 group-hover:text-black/10 mb-2 md:mb-4 block transition-colors">03</span>
-                  <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-black mb-4 md:mb-6 transition-colors">Edge Infrastructure.</h3>
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-black mb-4 md:mb-6 transition-colors">Full-Stack Solutions.</h3>
                   <p className="text-xs md:text-sm font-sans text-white/50 group-hover:text-black/70 leading-relaxed transition-colors">
-                    Secure, scalable, and instant. We deploy global database networks (PostgreSQL) and serverless edge functions that handle thousands of requests without breaking a sweat.
+                    We future-proof your business. From secure e-commerce payment gateways to AI integrations and robust databases, we give you the tools to dominate your industry.
                   </p>
                 </div>
+                {/* --- END NEW COPY --- */}
+
               </div>
             </div>
           </motion.div>

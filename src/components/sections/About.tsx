@@ -58,7 +58,7 @@ export default function About() {
         */}
         <div className="w-full flex flex-col gap-16 md:gap-24 py-10">
           
-          {/* Act I: The Origin (Left Aligned) */}
+          {/* Act I: The Origin (Left Aligned) - UPDATED COPY */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -66,13 +66,13 @@ export default function About() {
             transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
             className="max-w-md"
           >
-            <span className="text-xs font-display tracking-[0.2em] text-white/30 mb-4 block">[ 01 // ORIGIN ]</span>
+            <span className="text-xs font-display tracking-[0.2em] text-white/30 mb-4 block">[ 01 // MISSION ]</span>
             <p className="text-metallic font-sans text-base md:text-lg leading-relaxed tracking-wide">
-              It started in the dark. Late nights bleeding into early mornings, fueled by an unnatural obsession with flawless code. We didn't just want to build websites.
+              We don't just build websites; we engineer digital ecosystems. Tapecut Studios was founded on a singular obsession: creating high-performance web platforms that elevate brands and multiply revenue.
             </p>
           </motion.div>
 
-          {/* Act II: The Hook (Centered, Massive, Kinetic Fill) */}
+          {/* Act II: The Hook (Centered, Massive, Kinetic Fill) - UPDATED COPY */}
           <div className="flex justify-center w-full relative py-10">
             <h3 className="text-[12vw] md:text-[9vw] lg:text-[7.5rem] font-display font-bold uppercase leading-[0.85] tracking-tighter flex flex-col items-center select-none text-center">
               <span className="text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.2)] md:[-webkit-text-stroke:2px_rgba(255,255,255,0.2)]">
@@ -81,20 +81,20 @@ export default function About() {
               <div className="relative mt-2">
                 {/* Skeletal Base Layer */}
                 <span className="text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.2)] md:[-webkit-text-stroke:2px_rgba(255,255,255,0.2)]">
-                  Digital Physics.
+                  Digital Dominance.
                 </span>
                 {/* Solid Fill Layer (Revealed by Scroll) */}
                 <motion.span
                   style={{ clipPath }}
                   className="absolute inset-0 text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                 >
-                  Digital Physics.
+                  Digital Dominance.
                 </motion.span>
               </div>
             </h3>
           </div>
 
-          {/* Act III: The Result (Right Aligned) */}
+          {/* Act III: The Result (Right Aligned) - UPDATED COPY */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -104,7 +104,7 @@ export default function About() {
           >
              <span className="text-xs font-display tracking-[0.2em] text-white/30 mb-4 block">[ 02 // SCALE ]</span>
             <p className="text-metallic font-sans text-base md:text-lg leading-relaxed tracking-wide">
-              That obsession forged our reputation. Today, Tapecut Studios operates as an elite collective pushing the absolute boundaries of what a browser can render.
+              Our reputation is built on results. Today, Tapecut Studios partners with ambitious businesses to deliver elite UI/UX design, custom architectures, and scalable web solutions that leave competitors behind.
             </p>
           </motion.div>
 
@@ -113,10 +113,11 @@ export default function About() {
         {/* Leadership & Engineering Grid */}
         <div className="w-full flex flex-col md:flex-row gap-16 md:gap-8 justify-between items-start pt-20 border-t border-white/10 mt-10">
           
+          {/* UPDATED COPY */}
           <div className="w-full md:w-1/3">
-            <h3 className="text-2xl font-display font-bold tracking-tight mb-4">Engineering Core.</h3>
+            <h3 className="text-2xl font-display font-bold tracking-tight mb-4">Elite Execution.</h3>
             <p className="text-metallic font-sans text-sm md:text-base leading-relaxed">
-              We operate as a boutique collective. While we bring in specialized talent for massive scaling, the core architecture is always directed by our founders. Every line of code passes through a ruthless quality threshold.
+              We operate as a premium digital agency. Every project is meticulously crafted and overseen directly by our founders, ensuring your brand receives a bespoke, high-converting masterpiece with zero compromises.
             </p>
           </div>
 
