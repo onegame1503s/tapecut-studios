@@ -62,7 +62,6 @@ export default function Footer() {
         {/* Left Side */}
         <div className="w-full lg:w-1/2 flex flex-col justify-between">
           <div>
-            {/* UPDATED: Strong Business CTA */}
             <div className="flex items-center gap-6 mb-10">
               <div className="w-16 h-[1px] bg-red-500" />
               <h2 className="text-sm font-mono tracking-[0.3em] uppercase text-red-500">// INITIATE PROJECT</h2>
@@ -73,8 +72,9 @@ export default function Footer() {
               <span className="text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,1)]">WEBSITE.</span>
             </h3>
             
+            {/* SEO INJECTION: "Tapecut Studios" visibly in the paragraph */}
             <p className="text-metallic font-sans text-base md:text-lg max-w-md leading-relaxed mb-16">
-              Start the conversation. We partner with ambitious brands to engineer custom, high-converting digital platforms that dominate the market. Request a direct quote today.
+              Start the conversation. Tapecut Studios partners with ambitious brands to engineer custom, high-converting digital platforms that dominate the Delhi market and beyond. Request a direct quote today.
             </p>
 
             <div className="flex flex-col gap-4">
@@ -165,9 +165,6 @@ export default function Footer() {
               />
             </div>
 
-            {/* 
-              THE ADVANCED KINETIC LAUNCH TERMINAL 
-            */}
             <motion.button 
               type="submit"
               disabled={formState === "submitting" || formState === "success"}
@@ -175,15 +172,11 @@ export default function Footer() {
               transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
               className="group relative w-full flex items-center border border-transparent border-b-white/20 hover:border-b-white transition-colors overflow-hidden disabled:pointer-events-none cursor-none mt-4 px-2"
             >
-              {/* Solid Fill Layers (Success / Error / Hover) */}
               <div className={`absolute inset-0 z-0 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] origin-bottom
                 ${formState === 'error' ? 'bg-red-950 scale-y-100' : 'bg-white scale-y-0 group-hover:scale-y-100'}
                 ${formState === 'success' ? '!bg-white !scale-y-100' : ''}
               `} />
 
-              {/* 
-                THE LAUNCH SEQUENCE: MASSIVE CAD MISSILE
-              */}
               <AnimatePresence>
                 {formState === "submitting" && (
                   <motion.div
@@ -192,8 +185,6 @@ export default function Footer() {
                     exit={{ opacity: 0 }}
                     className="absolute inset-0 bg-[#050505] border border-white/20 z-30 flex items-center justify-center overflow-hidden"
                   >
-                    
-                    {/* HUD: Top Left */}
                     <div className="absolute top-4 left-4 font-mono text-[10px] text-metallic uppercase flex flex-col gap-1 text-left">
                       <motion.span animate={{ opacity: [1, 0.3, 1] }} transition={{ repeat: Infinity, duration: 1 }}>
                         [ ENCRYPTING PAYLOAD ]
@@ -201,7 +192,6 @@ export default function Footer() {
                       <span>TARGET: WORKPLACE4568</span>
                     </div>
 
-                    {/* HUD: Bottom Right */}
                     <div className="absolute bottom-4 right-4 font-mono text-[10px] text-metallic text-right flex flex-col gap-1">
                       <span>SYS.OP.4568</span>
                       <motion.span
@@ -213,7 +203,6 @@ export default function Footer() {
                       </motion.span>
                     </div>
 
-                    {/* Background Radar / CAD Grid */}
                     <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
 
                     <motion.div
@@ -230,15 +219,12 @@ export default function Footer() {
                         transition={{ duration: 0.1, repeat: Infinity }}
                         className="w-full h-full flex items-center justify-center relative"
                       >
-                         
-                         {/* MASSIVE PLASMA EXHAUST TRAIL */}
                          <motion.div 
                            className="absolute top-1/2 -translate-y-1/2 right-[85%] h-1 bg-white blur-[2px] shadow-[0_0_30px_5px_rgba(255,255,255,1)]"
                            animate={{ width: [0, 0, 0, 800, 800], opacity: [0, 0, 0, 1, 0] }}
                            transition={{ duration: 4.5, times: [0, 0.66, 0.77, 0.85, 1] }}
                          />
 
-                         {/* DETAILED AEROSPACE BLUEPRINT */}
                          <svg viewBox="0 0 400 150" className="w-full h-[150px] text-white/90 overflow-visible relative z-10" preserveAspectRatio="xMidYMid meet">
                            <line x1="200" y1="0" x2="200" y2="150" stroke="currentColor" strokeOpacity="0.2" strokeWidth="1" />
                            <line x1="0" y1="75" x2="400" y2="75" stroke="currentColor" strokeOpacity="0.2" strokeWidth="1" />
@@ -254,14 +240,12 @@ export default function Footer() {
                               <line x1="-10" y1="60" x2="-30" y2="60" stroke="currentColor" strokeWidth="2" />
                            </g>
                          </svg>
-
                       </motion.div>
                     </motion.div>
                   </motion.div>
                 )}
               </AnimatePresence>
 
-              {/* Default Button State */}
               <div className={`w-full flex items-center justify-between relative z-20 transition-opacity duration-300 px-2
                 ${formState === 'submitting' ? 'opacity-0' : 'opacity-100'}
               `}>
@@ -270,18 +254,16 @@ export default function Footer() {
                 `}>
                   {formState === "idle" && "Transmit Encrypted Data"}
                   
-                  {/* SUCCESS PROTOCOL */}
                   {formState === "success" && (
                     <span className="flex flex-col text-left py-2">
                         <span className="text-black font-bold text-base">Transmission Successful</span>
-                        <span className="text-xs text-black/70 font-sans tracking-wide normal-case mt-1">A lead architect will analyze your scope and respond within 48 hours.</span>
+                        <span className="text-xs text-black/70 font-sans tracking-wide normal-case mt-1">A Tapecut Studios lead architect will analyze your scope and respond within 48 hours.</span>
                     </span>
                   )}
                   
                   {formState === "error" && "System Error — Check Console"}
                 </span>
                 
-                {/* Icons */}
                 <div className={`transition-colors duration-500
                   ${(formState === 'success' || formState === 'error') ? 'text-black' : 'text-white group-hover:text-black'}
                 `}>
@@ -289,17 +271,16 @@ export default function Footer() {
                   {formState === "success" && <CheckCircle2 className="w-7 h-7" />}
                 </div>
               </div>
-
             </motion.button>
           </form>
         </div>
       </div>
 
-      {/* The Anchor */}
       <div className="w-full flex flex-col items-center justify-end relative mt-20">
         <div className="w-full px-6 md:px-10 flex flex-col md:flex-row justify-between items-center pb-8 z-10 gap-6 md:gap-0">
           <div className="text-xs font-sans tracking-widest uppercase text-metallic hidden md:block">
-            <span>OPERATING WORLDWIDE</span>
+            {/* SEO INJECTION: "Web Development Agency Delhi" explicitly visible for local SEO */}
+            <span>WEB DEVELOPMENT AGENCY DELHI</span>
           </div>
           <a href="mailto:workplace4568@gmail.com" className="text-sm md:text-xl font-sans tracking-widest text-white hover:text-metallic transition-colors interactive">
             workplace4568@gmail.com
