@@ -91,7 +91,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl md:text-3xl font-display font-bold tracking-widest text-white group-hover:text-metallic transition-colors duration-300">
-                    +91 914 917 7677
+                    +91 798 311 5325
                   </span>
                   <div className="w-0 h-[1px] bg-white group-hover:w-full transition-all duration-500 ease-out mt-1" />
                 </div>

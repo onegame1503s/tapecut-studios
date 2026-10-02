@@ -4,16 +4,25 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-const leaders = [
+// Replaced founder details with high-end agency capabilities to maintain layout weight
+const capabilities = [
   {
-    name: "Pranay Dauthal",
-    role: "Lead Architect & Founder",
-    email: "pranaydauthal@gmail.com"
+    title: "Cinematic UI/UX",
+    tech: "Next.js // React // Framer Motion",
+    action: "Front-End Architecture",
+    link: "#work"
   },
   {
-    name: "Manas Negi",
-    role: "Lead Architect & Founder",
-    email: "manasnegi261@gmail.com"
+    title: "Cloud Infrastructure",
+    tech: "Vercel // Serverless // Edge Networks",
+    action: "Deployment & Scaling",
+    link: "#work"
+  },
+  {
+    title: "Data & Logic",
+    tech: "Supabase // PostgreSQL // OAuth",
+    action: "Backend Systems",
+    link: "#work"
   }
 ];
 
@@ -58,7 +67,7 @@ export default function About() {
         */}
         <div className="w-full flex flex-col gap-16 md:gap-24 py-10">
           
-          {/* Act I: The Origin (Left Aligned) - UPDATED COPY */}
+          {/* Act I: The Origin (Left Aligned) */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +81,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          {/* Act II: The Hook (Centered, Massive, Kinetic Fill) - UPDATED COPY */}
+          {/* Act II: The Hook (Centered, Massive, Kinetic Fill) */}
           <div className="flex justify-center w-full relative py-10">
             <h3 className="text-[12vw] md:text-[9vw] lg:text-[7.5rem] font-display font-bold uppercase leading-[0.85] tracking-tighter flex flex-col items-center select-none text-center">
               <span className="text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.2)] md:[-webkit-text-stroke:2px_rgba(255,255,255,0.2)]">
@@ -94,7 +103,7 @@ export default function About() {
             </h3>
           </div>
 
-          {/* Act III: The Result (Right Aligned) - UPDATED COPY */}
+          {/* Act III: The Result (Right Aligned) */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -110,19 +119,18 @@ export default function About() {
 
         </div>
 
-        {/* Leadership & Engineering Grid */}
+        {/* REPLACED: Leadership Grid -> Core Capabilities Grid */}
         <div className="w-full flex flex-col md:flex-row gap-16 md:gap-8 justify-between items-start pt-20 border-t border-white/10 mt-10">
           
-          {/* UPDATED COPY */}
           <div className="w-full md:w-1/3">
-            <h3 className="text-2xl font-display font-bold tracking-tight mb-4">Elite Execution.</h3>
+            <h3 className="text-2xl font-display font-bold tracking-tight mb-4">Engineering Arsenal.</h3>
             <p className="text-metallic font-sans text-sm md:text-base leading-relaxed">
-              We operate as a premium digital agency. Every project is meticulously crafted and overseen directly by our founders, ensuring your brand receives a bespoke, high-converting masterpiece with zero compromises.
+              We replace bloated agency retainers with lean, high-performance web architecture. Every digital storefront is engineered for zero-latency loading, cinematic interactions, and flawless scalability.
             </p>
           </div>
 
           <div className="w-full md:w-1/2 flex flex-col gap-6">
-            {leaders.map((leader, index) => (
+            {capabilities.map((cap, index) => (
               <motion.div 
                 key={index}
                 initial={{ opacity: 0, x: 20 }}
@@ -132,22 +140,23 @@ export default function About() {
                 className="group relative flex flex-col sm:flex-row justify-between items-start sm:items-center p-6 border border-white/10 bg-[#0a0a0a] hover:bg-white interactive transition-colors duration-500 rounded-xl overflow-hidden"
               >
                 <div className="flex flex-col z-10 transition-colors duration-500 group-hover:text-black">
-                  <h4 className="text-xl font-display font-bold">{leader.name}</h4>
+                  <h4 className="text-xl font-display font-bold">{cap.title}</h4>
                   <span className="text-sm font-sans tracking-widest uppercase text-metallic group-hover:text-black/60 mt-1">
-                    {leader.role}
+                    {cap.tech}
                   </span>
                 </div>
                 
                 <a 
-                  href={`mailto:${leader.email}`}
+                  href={cap.link}
                   className="mt-4 sm:mt-0 z-10 flex items-center gap-2 text-sm font-sans tracking-wider text-white group-hover:text-black transition-colors duration-500"
                 >
                   <span className="hidden sm:inline-block border-b border-transparent group-hover:border-black transition-colors">
-                    {leader.email}
+                    {cap.action}
                   </span>
                   <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
                 </a>
 
+                {/* The white background fill effect remains exactly the same */}
                 <div className="absolute inset-0 bg-white scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] z-0" />
               </motion.div>
             ))}
