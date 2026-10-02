@@ -17,9 +17,28 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
+// UPGRADED SEO METADATA FOR GOOGLE SEARCH DOMINANCE
 export const metadata: Metadata = {
-  title: "Tapecut Studios | Premium Digital Engineering",
-  description: "Elite web development, immersive digital experiences, and architectural code by Tapecut Studios.",
+  title: "Tapecut Studios | Premium Web Architecture Agency",
+  description: "Tapecut Studios is an elite digital architecture agency based in Delhi, engineering high-performance, cinematic web platforms for ambitious brands.",
+  keywords: ["Tapecut Studios", "Web Development Agency Delhi", "Next.js Developers", "Premium Web Design", "Digital Architecture"],
+  metadataBase: new URL("https://tapecut.online"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Tapecut Studios | Premium Web Architecture",
+    description: "Elite web development, immersive digital experiences, and architectural code by Tapecut Studios.",
+    url: "https://tapecut.online",
+    siteName: "Tapecut Studios",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tapecut Studios",
+    description: "Premium Web Architecture Agency in Delhi",
+  },
 };
 
 export default function RootLayout({
