@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { ArrowRight, CheckCircle2, PhoneCall } from "lucide-react";
+import { ArrowRight, CheckCircle2, PhoneCall, Lock } from "lucide-react";
 
 export default function Footer() {
   const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -29,7 +29,6 @@ export default function Footer() {
     });
 
     try {
-      // THE FIX: We FORCE a 4.5-second delay to let the massive CAD missile sequence play out.
       await wait(4500); 
 
       const response = await networkPromise;
@@ -72,7 +71,6 @@ export default function Footer() {
               <span className="text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,1)]">WEBSITE.</span>
             </h3>
             
-            {/* SEO INJECTION: "Tapecut Studios" visibly in the paragraph */}
             <p className="text-metallic font-sans text-base md:text-lg max-w-md leading-relaxed mb-16">
               Start the conversation. Tapecut Studios partners with ambitious brands to engineer custom, high-converting digital platforms that dominate the Delhi market and beyond. Request a direct quote today.
             </p>
@@ -278,10 +276,24 @@ export default function Footer() {
 
       <div className="w-full flex flex-col items-center justify-end relative mt-20">
         <div className="w-full px-6 md:px-10 flex flex-col md:flex-row justify-between items-center pb-8 z-10 gap-6 md:gap-0">
-          <div className="text-xs font-sans tracking-widest uppercase text-metallic hidden md:block">
-            {/* SEO INJECTION: "Web Development Agency Delhi" explicitly visible for local SEO */}
-            <span>WEB DEVELOPMENT AGENCY DELHI</span>
+          
+          <div className="flex items-center gap-6">
+            <div className="text-xs font-sans tracking-widest uppercase text-metallic hidden md:block">
+              <span>WEB DEVELOPMENT AGENCY DELHI</span>
+            </div>
+            
+            {/* OPS PORTAL BUTTON */}
+            <a 
+              href="https://tapecut-portal.vercel.app/portal/login" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2 px-3 py-1.5 border border-white/10 hover:border-white/40 text-[10px] tracking-[0.2em] font-mono text-white/50 hover:text-white transition-all bg-black/50 backdrop-blur-sm group"
+            >
+              <Lock className="w-3 h-3 text-red-500 group-hover:text-red-400 transition-colors" />
+              <span className="mt-[2px]">OPS PORTAL</span>
+            </a>
           </div>
+
           <a href="mailto:workplace4568@gmail.com" className="text-sm md:text-xl font-sans tracking-widest text-white hover:text-metallic transition-colors interactive">
             workplace4568@gmail.com
           </a>
