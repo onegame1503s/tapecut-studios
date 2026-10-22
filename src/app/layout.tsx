@@ -18,17 +18,22 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 // UPGRADED SEO METADATA FOR TAPECUT.INFO
+// UPGRADED SEO METADATA FOR TAPECUT.INFO
 export const metadata: Metadata = {
-  title: "Tapecut Studios | Premium Web Architecture Agency",
-  description: "Tapecut Studios is an elite digital architecture agency based in Delhi, engineering high-performance, cinematic web platforms for ambitious brands.",
+  // Added "Web Development" and "Delhi" directly to the title
+  title: "Tapecut Studios | Premium Web Development Agency in Delhi",
+  
+  // Explicitly mentioned "Next.js" and "web development" while keeping the premium tone
+  description: "Tapecut Studios is an elite web development and digital architecture agency in Delhi. We engineer high-performance Next.js, React, and custom web platforms for ambitious brands.",
+  
   keywords: ["Tapecut Studios", "Web Development Agency Delhi", "Next.js Developers", "Premium Web Design", "Digital Architecture"],
   metadataBase: new URL("https://tapecut.info"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Tapecut Studios | Premium Web Architecture",
-    description: "Elite web development, immersive digital experiences, and architectural code by Tapecut Studios.",
+    title: "Tapecut Studios | Premium Web Development Delhi",
+    description: "Elite web development, high-performance Next.js architectures, and immersive digital experiences by Tapecut Studios.",
     url: "https://tapecut.info",
     siteName: "Tapecut Studios",
     locale: "en_IN",
@@ -36,8 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tapecut Studios",
-    description: "Premium Web Architecture Agency in Delhi",
+    title: "Tapecut Studios | Web Development",
+    description: "Premium Web Development Agency based in Delhi.",
   },
 };
 
